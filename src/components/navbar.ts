@@ -26,10 +26,16 @@ export function renderNavbar(): void {
     oshiNameEl.textContent = oshi ? oshi.name : '';
   }
 
-  if (current === 'onboarding') return;
-
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
+
+  if (current === 'onboarding') {
+    navbar.style.display = 'none';
+    return;
+  }
+
+  // 온보딩에서 넘어올 때 인라인 스타일 초기화
+  navbar.style.display = '';
 
   navbar.innerHTML = NAV_ITEMS.map((item) => {
     const label = t(item.labelKey) as string;
