@@ -1,161 +1,23 @@
 {
   "permissions": {
     "allow": [
-      "Read",
-      "Edit",
-      "MultiEdit",
-      "Write",
-      "Bash(npm *)",
-      "Bash(node *)",
-      "Bash(npx *)",
-      "Bash(python *)",
-      "Bash(python3 *)",
-      "Bash(mkdir *)",
-      "Bash(cp *)",
-      "Bash(mv *)",
-      "Bash(cat *)",
-      "Bash(ls *)",
-      "Bash(find *)",
-      "Bash(grep *)",
-      "Bash(head *)",
-      "Bash(tail *)",
-      "Bash(wc *)",
-      "Bash(sort *)",
-      "Bash(sed *)",
-      "Bash(awk *)",
-      "Bash(echo *)",
-      "Bash(touch *)",
-      "Bash(chmod *)",
-      "Bash(cd *)",
-      "Bash(pwd)",
+      "PowerShell(Test-Path *)",
+      "Skill(update-config)",
+      "WebFetch(domain:www.caa.go.jp)",
+      "PowerShell(New-Item *)",
+      "PowerShell(python -c \"import google.generativeai as genai; print\\(dir\\(genai\\)\\)\")",
+      "PowerShell(python -c \"from google.generativeai import types; print\\([x for x in dir\\(types\\) if 'config' in x.lower\\(\\) or 'image' in x.lower\\(\\) or 'modal' in x.lower\\(\\)]\\)\")",
+      "PowerShell(pip show *)",
+      "PowerShell(python -c \"from google.genai import types; attrs = [x for x in dir\\(types\\) if 'image' in x.lower\\(\\) or 'modal' in x.lower\\(\\) or 'config' in x.lower\\(\\)]; print\\(attrs[:40]\\)\")",
+      "PowerShell(python -c \"from google.genai import types; attrs = [x for x in dir\\(types\\) if 'generate' in x.lower\\(\\) or 'ImageGen' in x or 'ResponseModal' in x]; print\\(attrs\\)\")",
+      "PowerShell(python -c \"from google.genai import types; help\\(types.GenerateContentConfig\\)\" 2>&1 | Select-Object -First 40)",
+      "PowerShell(python -c \"from google.genai import types; help\\(types.ImageConfig\\)\" 2>&1 | Select-Object -First 20)",
+      "PowerShell(Get-ChildItem \"F:\\\\Personal_project\\\\kiikii_service\\\\assets\\\\island\\\\\" | Select-Object Name, @{N='Size\\(KB\\)';E={[math]::Round\\($_.Length/1KB,1\\)}} | Format-Table -AutoSize)",
+      "WebFetch(domain:namu.wiki)",
+      "WebFetch(domain:kiiikiii.kr)",
+      "Bash(git remote *)",
       "Bash(git add *)",
-      "Bash(git commit *)",
-      "Bash(git status)",
-      "Bash(git diff *)",
-      "Bash(git log *)",
-      "Bash(git branch *)",
-      "Bash(git checkout *)",
-      "Bash(git stash *)"
-    ],
-    "deny": [
-      "Bash(rm -rf *)",
-      "Bash(git push *)",
-      "Bash(curl *)",
-      "Bash(wget *)",
-      "Bash(sudo *)"
-    ]
-  },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-pre-write.cjs\""
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-bash-pre.cjs\""
-          }
-        ]
-      },
-      {
-        "matcher": "Skill",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-skill-start.cjs\""
-          }
-        ]
-      },
-      {
-        "matcher": "Agent",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-skill-start.cjs\""
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-file-change.cjs\""
-          }
-        ]
-      },
-      {
-        "matcher": "Skill",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-skill-end.cjs\""
-          }
-        ]
-      },
-      {
-        "matcher": "Agent",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-skill-end.cjs\""
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-session-start.cjs\""
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-stop.cjs\""
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-compact.cjs\""
-          }
-        ]
-      }
-    ],
-    "StopFailure": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/on-stop-failure.cjs\""
-          }
-        ]
-      }
+      "Bash(git commit *)"
     ]
   }
 }

@@ -16,7 +16,7 @@ export const MEMBERS: Member[] = [
     nameKo: '지유',
     role: 'Leader · Vocal · Dancer',
     color: '#B57BCC',
-    image: '/assets/char_jiyu.png',
+    image: 'char_jiyu.png',
     description: 'Bright energy that lights up the stage',
     dailyMessage: {
       ko: '오늘도 와줘서 고마워! 💜',
@@ -30,7 +30,7 @@ export const MEMBERS: Member[] = [
     nameKo: '지우',
     role: 'Main Vocal',
     color: '#5B7FA6',
-    image: '/assets/char_jiwoo.png',
+    image: 'char_jiwoo.png',
     description: 'Cool and captivating vocals',
     dailyMessage: {
       ko: '오늘 하루도 같이 달려봐요 🌊',
@@ -44,7 +44,7 @@ export const MEMBERS: Member[] = [
     nameKo: '수빈',
     role: 'Main Rapper · Dancer',
     color: '#C8384A',
-    image: '/assets/char_subin.png',
+    image: 'char_subin.png',
     description: 'Bold charisma and fierce presence',
     dailyMessage: {
       ko: '오늘도 최고야, 진짜로! 🔥',
@@ -58,7 +58,7 @@ export const MEMBERS: Member[] = [
     nameKo: '수민',
     role: 'Vocal · Rapper',
     color: '#F07850',
-    image: '/assets/char_sumin.png',
+    image: 'char_sumin.png',
     description: 'Vibrant and full of energy',
     dailyMessage: {
       ko: '매일 이렇게 응원해줘서 힘이 나! 🍑',
@@ -72,7 +72,7 @@ export const MEMBERS: Member[] = [
     nameKo: '하음',
     role: 'Vocal · Visual',
     color: '#8B6355',
-    image: '/assets/char_haeum.png',
+    image: 'char_haeum.png',
     description: 'Warm charm and mature grace',
     dailyMessage: {
       ko: '오늘도 함께해줘서 따뜻해 ☕',

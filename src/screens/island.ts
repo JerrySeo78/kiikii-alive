@@ -1,4 +1,5 @@
 import { IslandEngine, DECO_ITEMS, WALL_ITEMS, CW, CH, type IslandMode, type TileType, type WallType } from '../island/IslandEngine.js';
+import { asset } from '../utils.js';
 
 // ── Sample room data ────────────────────────────────────────────────────────
 
@@ -336,7 +337,7 @@ export async function renderIsland(): Promise<void> {
               ${TILE_OPTIONS.map(t => `
                 <button class="island__tpick${t.type === 'green' ? ' island__pick--sel' : ''}"
                   data-tile="${t.type}" title="${t.label}">
-                  <img src="/island/${t.file}" alt="${t.label}">
+                  <img src="${asset('island/' + t.file)}" alt="${t.label}">
                   <small>${t.label}</small>
                 </button>
               `).join('')}
@@ -346,7 +347,7 @@ export async function renderIsland(): Promise<void> {
             <div class="island__trow" id="island-wrow">
               ${WALL_ITEMS.map(w => `
                 <button class="island__tpick" data-wall="${w.id}" title="${w.name}">
-                  <img src="/island/${w.file}" alt="${w.name}">
+                  <img src="${asset('island/' + w.file)}" alt="${w.name}">
                   <small>${w.name}</small>
                 </button>
               `).join('')}
@@ -356,7 +357,7 @@ export async function renderIsland(): Promise<void> {
             <div class="island__drow" id="island-drow">
               ${DECO_ITEMS.map(d => `
                 <button class="island__dpick" data-id="${d.id}" title="${d.name}">
-                  <img src="/island/${d.file}" alt="${d.name}">
+                  <img src="${asset('island/' + d.file)}" alt="${d.name}">
                   <small>${d.name}</small>
                 </button>
               `).join('')}
@@ -652,7 +653,7 @@ function _initShopPanel(): void {
     <div class="island__shop-grid">
       ${DECO_ITEMS.map((d, i) => `
         <div class="island__shop-item">
-          <img src="/island/${d.file}" alt="${d.name}" />
+          <img src="${asset('island/' + d.file)}" alt="${d.name}" />
           <div class="island__shop-name">${d.name}</div>
           <div class="island__shop-price">${i < 3 ? '<span class="island__shop-owned">보유 중</span>' : `${(i + 1) * 200}P`}</div>
         </div>

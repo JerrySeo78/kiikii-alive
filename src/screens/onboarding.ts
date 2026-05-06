@@ -2,6 +2,7 @@ import { MEMBERS } from '../data/members.js';
 import { setOshi } from '../state.js';
 import { navigate } from '../router.js';
 import { t } from '../i18n.js';
+import { asset } from '../utils.js';
 
 export function renderOnboarding(): void {
   const container = document.getElementById('screen-container');
@@ -23,7 +24,7 @@ export function renderOnboarding(): void {
             <div class="member-card__image-wrap">
               <img
                 class="member-card__image"
-                src="${m.image}"
+                src="${asset(m.image)}"
                 alt="${m.nameKo}"
                 loading="lazy"
               />

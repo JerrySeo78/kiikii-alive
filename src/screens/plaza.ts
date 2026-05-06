@@ -3,6 +3,7 @@ import {
   type PlazaPost,
 } from '../data/plaza.js';
 import { getOshi } from '../state.js';
+import { asset } from '../utils.js';
 
 // ── Module state ──────────────────────────────────────────────────────────────
 let fanPosts: PlazaPost[] = [...INITIAL_FAN_POSTS];
@@ -379,7 +380,7 @@ function renderMemberMsg(post: PlazaPost): string {
   const hasChar = ['jiyu', 'jiwoo', 'subin', 'sumin', 'haeum'].includes(post.authorId);
   const avatarHTML = hasChar
     ? `<div class="plaza__member-avatar plaza__member-avatar--char">
-         <img src="/assets/char_${post.authorId}.png" alt="${post.authorName}" />
+         <img src="${asset('char_' + post.authorId + '.png')}" alt="${post.authorName}" />
        </div>`
     : `<div class="plaza__member-avatar">${post.authorAvatar}</div>`;
   return `

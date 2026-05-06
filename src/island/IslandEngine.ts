@@ -1,5 +1,6 @@
 // IslandEngine.ts — KiiKii Fan Island isometric canvas engine
 // Ported from diy_land_simple.html (brown_farm_ground_edit reference)
+import { asset } from '../utils.js';
 
 // ── Constants ──────────────────────────────────────────────────────────────
 const COLS = 10;
@@ -199,7 +200,7 @@ export class IslandEngine {
       const img = new Image();
       img.onload  = () => { this.images.set(file, img); resolve(); };
       img.onerror = () => resolve();
-      img.src = `/island/${file}`;
+      img.src = asset(`island/${file}`);
     })));
 
     const chibiLoad = this.oshiId
@@ -207,7 +208,7 @@ export class IslandEngine {
           const img = new Image();
           img.onload  = () => { this.chibiImg = img; resolve(); };
           img.onerror = () => resolve();
-          img.src = `/assets/char_${this.oshiId}.png`;
+          img.src = asset(`char_${this.oshiId}.png`);
         })
       : Promise.resolve();
 
@@ -368,7 +369,7 @@ export class IslandEngine {
       const img = new Image();
       img.onload  = () => { this.chibiImg = img; resolve(); };
       img.onerror = () => { this.chibiImg = null; resolve(); };
-      img.src = `/assets/char_${newOshiId}.png`;
+      img.src = asset(`char_${newOshiId}.png`);
     });
   }
 
@@ -379,7 +380,7 @@ export class IslandEngine {
       const img = new Image();
       img.onload  = () => { this._visitImg = img; resolve(); };
       img.onerror = () => { this._visitImg = null; resolve(); };
-      img.src = `/assets/char_${oshiId}.png`;
+      img.src = asset(`char_${oshiId}.png`);
     });
   }
 
