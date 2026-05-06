@@ -17,3 +17,16 @@ dist/
 *.log
 .DS_Store
 _upgrade_backup/
+
+# Terminal Paste Image folder
+.cp-images/
+
+# IDE / Claude Code local settings
+.claude/settings.local.json
+
+# Python cache
+tools/__pycache__/
+
+# Temp image files (root level)
+*.png
+SAMPLE.png

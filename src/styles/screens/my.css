@@ -1,0 +1,419 @@
+/* =====================
+   MY Screen
+   ===================== */
+
+.screen--my {
+  min-height: 100%;
+  background: var(--bg-soft);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.my__hero {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(
+    140deg,
+    var(--hero-color, #9B7FE8) 0%,
+    color-mix(in srgb, var(--hero-color, #9B7FE8) 55%, #ffffff) 100%
+  );
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 24px 24px;
+  flex-shrink: 0;
+}
+
+.my__hero-info {
+  flex: 1;
+  z-index: 1;
+}
+
+.my__hero-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.my__hero-name {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.my__hero-role {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 4px;
+}
+
+.my__hero-img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 195px;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+}
+
+.my__hero-img--empty {
+  width: 80px;
+  height: 80px;
+}
+
+/* ── Sections ─────────────────────────────────────────────── */
+.my__section {
+  padding: 12px 16px 0;
+}
+
+.my__section--collapse {
+  overflow: hidden;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.3s ease;
+}
+
+.my__section--open {
+  max-height: 400px;
+  padding-top: 12px;
+}
+
+/* ── Stat row ─────────────────────────────────────────────── */
+.my__stat-row {
+  background: white;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  padding: 18px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.my__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.my__stat-value {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.my__stat-num {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--oshi-color, var(--accent));
+  line-height: 1;
+}
+
+.my__stat-unit {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--oshi-color, var(--accent));
+  opacity: 0.8;
+}
+
+.my__stat-label {
+  font-size: 11px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.my__stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+}
+
+.my__stat--tappable {
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: opacity 0.15s;
+}
+
+.my__stat--tappable:active {
+  opacity: 0.6;
+}
+
+/* ── Menu card ────────────────────────────────────────────── */
+.my__menu-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.my__menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: white;
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.my__menu-item:hover,
+.my__menu-item:active { background: var(--bg-soft); }
+
+.my__menu-icon {
+  font-size: 20px;
+  width: 26px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.my__menu-label {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.my__menu-arrow {
+  font-size: 22px;
+  color: var(--text-light);
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+.my__divider {
+  height: 1px;
+  background: var(--border-light);
+  margin: 0 20px;
+}
+
+/* ── Oshi selector ────────────────────────────────────────── */
+.my__oshi-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.my__oshi-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--bg-soft);
+  border: 2px solid transparent;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.15s;
+  flex: 1;
+  min-width: 68px;
+}
+
+.my__oshi-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.my__oshi-item--active {
+  border-color: var(--member-color, var(--accent));
+  background: color-mix(in srgb, var(--member-color, var(--accent)) 12%, white);
+}
+
+/* ── Language selector ────────────────────────────────────── */
+.my__lang-list {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.my__lang-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: white;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.my__lang-item:last-child { border-bottom: none; }
+.my__lang-item:hover { background: var(--bg-soft); }
+
+.my__lang-item--active {
+  color: var(--oshi-color, var(--accent));
+  font-weight: 700;
+}
+
+.my__lang-check {
+  font-size: 16px;
+  color: var(--oshi-color, var(--accent));
+  font-weight: 700;
+}
+
+/* ── Entry / Win history ──────────────────────────────────── */
+.my__card-section {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.my__card-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 20px 10px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.my__empty {
+  padding: 20px;
+  font-size: 14px;
+  color: var(--text-light);
+  text-align: center;
+}
+
+.my__entry-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  gap: 12px;
+}
+
+.my__entry-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.my__entry-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.my__entry-date {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.my__entry-badge {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+.my__entry-badge--pending {
+  background: #FFF3CD;
+  color: #856404;
+}
+
+.my__entry-badge--won {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.my__entry-badge--missed {
+  background: var(--bg-soft);
+  color: var(--text-light);
+}
+
+/* ── Voucher cards ────────────────────────────────────────── */
+.my__voucher {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+}
+
+.my__voucher--available {
+  background: color-mix(in srgb, var(--oshi-color, var(--accent)) 5%, white);
+}
+
+.my__voucher--used {
+  opacity: 0.6;
+}
+
+.my__voucher-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.my__voucher-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.my__voucher--used .my__voucher-title {
+  text-decoration: line-through;
+  color: var(--text-light);
+}
+
+.my__voucher-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.my__voucher-meta {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+.my__voucher-btn {
+  flex-shrink: 0;
+  background: var(--oshi-color, var(--accent));
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  transition: filter 0.15s;
+}
+
+.my__voucher-btn:hover { filter: brightness(1.08); }
+
+.my__voucher-used-label {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  background: var(--bg-soft);
+  padding: 6px 12px;
+  border-radius: 9999px;
+}

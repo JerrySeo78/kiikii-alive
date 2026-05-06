@@ -1,0 +1,261 @@
+/* =====================
+   Cardbook Screen
+   ===================== */
+.screen--cardbook {
+  background: var(--bg-soft);
+}
+
+.cardbook__header {
+  padding: 20px 20px 12px;
+  background: white;
+  border-bottom: 1px solid var(--border);
+}
+
+.cardbook__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cardbook__subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* Member tabs */
+.cardbook__tabs {
+  display: flex;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  gap: 4px;
+  padding: 0 12px;
+}
+
+.cardbook__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.cardbook__tab {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  background: none;
+}
+
+.cardbook__tab--active {
+  color: var(--tab-color);
+  border-bottom-color: var(--tab-color);
+  font-weight: 700;
+}
+
+/* Progress */
+.cardbook__grid-wrap {
+  padding: 16px;
+}
+
+.cardbook__progress {
+  margin-bottom: 16px;
+}
+
+.cardbook__progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.cardbook__progress-count {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.cardbook__progress-bar {
+  height: 6px;
+  background: var(--border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.cardbook__progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+/* Card grid */
+.cardbook__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.cardbook__item {
+  aspect-ratio: 2/3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease;
+  cursor: pointer;
+}
+
+.cardbook__item:hover {
+  transform: translateY(-2px);
+}
+
+.cardbook__item--owned {
+  background: white;
+  border: 1.5px solid var(--card-color);
+}
+
+.cardbook__item--locked {
+  background: #f0eef8;
+  border: 1.5px solid var(--border);
+}
+
+.cardbook__item-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 6px 6px;
+  gap: 4px;
+}
+
+.cardbook__item-img {
+  width: 100%;
+  flex: 1;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--radius-sm);
+}
+
+.cardbook__item-grade {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  background: var(--card-color);
+  color: white;
+}
+
+.cardbook__item--locked .cardbook__item-grade {
+  background: var(--border);
+  color: var(--text-light);
+}
+
+/* Rare grade glow */
+.cardbook__item.card--rare.cardbook__item--owned {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--card-color) 40%, transparent), var(--shadow-sm);
+}
+
+/* Special grade glow */
+.cardbook__item.card--special.cardbook__item--owned {
+  border-color: #ffd700;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.35);
+}
+
+.cardbook__item.card--special.cardbook__item--owned .cardbook__item-grade {
+  background: #b8860b;
+}
+
+.cardbook__item-title {
+  font-size: 10px;
+  color: var(--text-primary);
+  text-align: center;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.cardbook__item--locked .cardbook__item-title {
+  color: var(--text-light);
+}
+
+.cardbook__item-silhouette {
+  flex: 1;
+  width: 100%;
+  background: linear-gradient(160deg, #e0dcea, #d0cce0);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardbook__item-lock {
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+/* ── Cardbook Overlay ──────────────────────────────────────────────────── */
+.cardbook-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 500;
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.cardbook-overlay--open {
+  opacity: 1;
+}
+
+.cardbook-overlay--open .cardbook-overlay__sheet {
+  transform: translateY(0);
+}
+
+.cardbook-overlay__sheet {
+  width: 100%;
+  height: 90%;
+  background: var(--bg-soft);
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.cardbook-overlay__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 14px;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.cardbook-overlay__title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cardbook-overlay__close {
+  font-size: 18px;
+  color: var(--text-secondary);
+  background: none;
+  padding: 4px 8px;
+}
+
+.cardbook-overlay__body {
+  flex: 1;
+  overflow-y: auto;
+}

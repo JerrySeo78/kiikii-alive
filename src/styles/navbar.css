@@ -1,0 +1,101 @@
+/* =====================
+   App Top Bar
+   ===================== */
+#app-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-light);
+  padding-top: env(safe-area-inset-top, 0px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Brand Row ── */
+#app-brand-row {
+  height: var(--appbar-brand-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+#app-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  line-height: 1;
+}
+
+.app-logo__brand {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.app-logo__sub {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+#app-brand-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#app-oshi-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+#app-settings-btn {
+  font-size: 18px;
+  padding: 4px;
+  opacity: 0.55;
+  line-height: 1;
+  transition: opacity 0.15s ease;
+}
+
+#app-settings-btn:active { opacity: 1; }
+
+/* ── Tab Nav Row ── */
+#navbar {
+  height: var(--appbar-tab-h);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+}
+
+.nav-item {
+  flex: 1;
+  height: 32px;
+  padding: 0 4px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font);
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-item:active {
+  opacity: 0.75;
+}
+
+.nav-item--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}

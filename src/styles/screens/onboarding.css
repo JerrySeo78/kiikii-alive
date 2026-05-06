@@ -1,0 +1,176 @@
+/* =====================
+   Onboarding Screen
+   ===================== */
+.screen--onboarding {
+  background: linear-gradient(160deg, #f0ecff 0%, #fff5fb 50%, #e8f4ff 100%);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.onboarding__header {
+  padding: 48px 24px 20px;
+  text-align: center;
+}
+
+.onboarding__logo {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.onboarding__subtitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.onboarding__desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* Member cards grid */
+.onboarding__members {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 16px;
+  flex: 1;
+}
+
+/* Last card (5th) centered */
+.onboarding__members .member-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.member-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid transparent;
+  padding: 0;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+}
+
+.member-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.member-card:active {
+  transform: scale(0.97);
+}
+
+.member-card--selected {
+  border-color: var(--member-color);
+  box-shadow: 0 0 0 3px var(--member-color), var(--shadow-md);
+}
+
+.member-card__image-wrap {
+  position: relative;
+  width: 100%;
+  height: 68%;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--member-color) 0%, color-mix(in srgb, var(--member-color) 40%, white) 100%);
+}
+
+.member-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.member-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.15) 100%);
+}
+
+.member-card__info {
+  padding: 10px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: white;
+}
+
+.member-card__name-en {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--member-color);
+  letter-spacing: 0.04em;
+}
+
+.member-card__name-ko {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.member-card__desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.member-card__select-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  border: 3px solid transparent;
+  transition: border-color 0.2s ease;
+  pointer-events: none;
+}
+
+.member-card--selected .member-card__select-ring {
+  border-color: var(--member-color);
+}
+
+.onboarding__note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-light);
+  padding: 12px 16px 8px;
+}
+
+.onboarding__footer {
+  padding: 8px 16px 32px;
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(0deg, #fff5fb 60%, transparent 100%);
+}
+
+.onboarding__confirm-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  background: var(--confirm-color, var(--accent));
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.15s ease, background 0.3s ease;
+}
+
+.onboarding__confirm-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.onboarding__confirm-btn:not(:disabled):active {
+  transform: scale(0.97);
+}

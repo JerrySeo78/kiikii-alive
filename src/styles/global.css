@@ -1,0 +1,299 @@
+/* =====================
+   CSS Variables
+   ===================== */
+:root {
+  --accent: #1D2ECC;
+  --accent-dark: #1520A8;
+  --accent-light: #EEF0FF;
+  --accent-mid: #A0A8F0;
+
+  --bg: #ffffff;
+  --bg-soft: #F7F8FC;
+  --bg-card: #ffffff;
+
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-light: #999999;
+
+  --border: #E8E8E8;
+  --border-light: #F2F2F2;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.10);
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --appbar-brand-h: 52px;
+  --appbar-tab-h:   46px;
+  --appbar-h: calc(var(--appbar-brand-h) + var(--appbar-tab-h) + env(safe-area-inset-top, 0px));
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* =====================
+   Reset
+   ===================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: #dcdcdc;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+  border: none;
+  background: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =====================
+   App Shell
+   ===================== */
+#app {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  height: 100dvh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.18);
+  /* makes position:fixed children relative to this container, not viewport */
+  transform: translateZ(0);
+}
+
+#screen-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding-top: var(--appbar-h);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Onboarding hides the top bar */
+#app[data-route="onboarding"] #app-top { display: none; }
+#app[data-route="onboarding"] #screen-container { padding-top: 0; }
+
+#screen-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* =====================
+   Screens base
+   ===================== */
+.screen {
+  min-height: 100%;
+  background: var(--bg-soft);
+}
+
+/* =====================
+   Toast
+   ===================== */
+#toast-container {
+  position: fixed;
+  bottom: calc(var(--navbar-h) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  width: 100%;
+}
+
+.toast {
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+}
+
+.toast--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast--hiding {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* =====================
+   Utility
+   ===================== */
+.hidden {
+  display: none !important;
+}
+
+/* =====================
+   Settings Panel (global)
+   ===================== */
+.settings-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+}
+
+.settings-panel__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.settings-panel__sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  max-height: 80dvh;
+  overflow-y: auto;
+}
+
+.settings-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.settings-panel__title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.settings-panel__close {
+  font-size: 16px;
+  color: var(--text-secondary);
+  padding: 4px 8px;
+}
+
+.settings-panel__section {
+  padding: 16px 20px 0;
+}
+
+.settings-panel__label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.settings-panel__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.settings-panel__row--btn { cursor: pointer; }
+
+.settings-panel__arrow {
+  font-size: 18px;
+  color: var(--text-light);
+}
+
+.settings-panel__select {
+  font-family: var(--font);
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  color: var(--text-primary);
+  background: var(--bg);
+}
+
+.settings-panel__toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.settings-panel__toggle input { opacity: 0; width: 0; height: 0; }
+
+.settings-panel__toggle-track {
+  position: absolute;
+  inset: 0;
+  background: var(--border);
+  border-radius: var(--radius-full);
+  transition: background 0.2s ease;
+}
+
+.settings-panel__toggle-track::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 3px;
+  left: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.settings-panel__toggle input:checked + .settings-panel__toggle-track {
+  background: var(--accent);
+}
+
+.settings-panel__toggle input:checked + .settings-panel__toggle-track::after {
+  transform: translateX(18px);
+}
