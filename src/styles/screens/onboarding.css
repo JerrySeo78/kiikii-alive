@@ -59,7 +59,8 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   border: 2px solid transparent;
   padding: 0;
-  aspect-ratio: 3/4;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
 }
 
@@ -80,8 +81,9 @@
 .member-card__image-wrap {
   position: relative;
   width: 100%;
-  height: 68%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  flex-shrink: 0;
   background: linear-gradient(180deg, var(--member-color) 0%, color-mix(in srgb, var(--member-color) 40%, white) 100%);
 }
 
