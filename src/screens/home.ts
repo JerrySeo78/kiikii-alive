@@ -9,6 +9,7 @@ import { t, getLang } from '../i18n.js';
 import { navigate } from '../router.js';
 import { openCardbookOverlay } from './cardbook.js';
 import { openTicketOverlay } from '../components/ticketOverlay.js';
+import { asset } from '../utils.js';
 
 // ── Stat icons ────────────────────────────────────────────────────────────────
 const ICON_CALENDAR = `
@@ -40,7 +41,7 @@ export function renderHome(): void {
   if (!container) return;
 
   const oshi = getOshi();
-  if (!oshi) return;
+  if (!oshi) { navigate('onboarding'); return; }
 
   const cheered      = hasCheeredToday();
   const cardReceived = hasReceivedCardToday();
@@ -60,7 +61,7 @@ export function renderHome(): void {
           <div class="home__hero-message">${dailyMsg}</div>
         </div>
         <div class="home__hero-chibi">
-          <img src="${oshi.image}" alt="${oshi.nameKo}" />
+          <img src="${asset(oshi.image)}" alt="${oshi.nameKo}" />
         </div>
       </div>
 

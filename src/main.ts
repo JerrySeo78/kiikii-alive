@@ -53,7 +53,11 @@ declare global {
   }
 }
 
-import { resetAllState } from './state.js';
+import { resetAllState, getOshi, applyOshiTheme } from './state.js';
+
+// Apply saved oshi theme for returning users (before first render)
+const _savedOshi = getOshi();
+if (_savedOshi) applyOshiTheme(_savedOshi.id);
 window.kiikii = {
   reset: () => { resetAllState(); navigate('onboarding'); },
   go: (route) => navigate(route as Parameters<typeof navigate>[0]),

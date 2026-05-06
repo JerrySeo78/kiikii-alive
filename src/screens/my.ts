@@ -4,12 +4,14 @@ import { openCardbookOverlay } from './cardbook.js';
 import { openTicketOverlay } from '../components/ticketOverlay.js';
 import { MEMBERS } from '../data/members.js';
 import { t, getLang, setLang, type Lang } from '../i18n.js';
+import { asset } from '../utils.js';
 
 export function renderMy(): void {
   const container = document.getElementById('screen-container');
   if (!container) return;
 
   const oshi    = getOshi();
+  if (!oshi) { navigate('onboarding'); return; }
   const streak  = getStreak();
   const cards   = getCollectedCards().length;
   const tickets = getTickets();
@@ -32,7 +34,7 @@ export function renderMy(): void {
           <div class="my__hero-role">${oshi ? oshi.role : ''}</div>
         </div>
         ${oshi
-          ? `<img class="my__hero-img" src="${oshi.image}" alt="${oshi.name}" />`
+          ? `<img class="my__hero-img" src="${asset(oshi.image)}" alt="${oshi.name}" />`
           : '<div class="my__hero-img--empty"></div>'}
       </div>
 

@@ -1,5 +1,6 @@
 import { IslandEngine, DECO_ITEMS, WALL_ITEMS, CW, CH, type IslandMode, type TileType, type WallType } from '../island/IslandEngine.js';
 import { asset } from '../utils.js';
+import { navigate } from '../router.js';
 
 // ── Sample room data ────────────────────────────────────────────────────────
 
@@ -262,8 +263,9 @@ export async function renderIsland(): Promise<void> {
 
   currentRoomId = null;
 
-  const oshiColor = getOshiColor();
   const oshiId    = localStorage.getItem('kiikii_oshi') ?? '';
+  if (!oshiId) { navigate('onboarding'); return; }
+  const oshiColor = getOshiColor();
 
   // Show loading state while images load
   container.innerHTML = `
