@@ -4,7 +4,6 @@
 
 # 의존성
 node_modules/
-package-lock.json
 
 # 빌드 출력
 dist/
@@ -27,6 +26,5 @@ _upgrade_backup/
 # Python cache
 tools/__pycache__/
 
-# Temp image files (root level)
-*.png
-SAMPLE.png
+# Temp image files (root level only)
+/*.png
